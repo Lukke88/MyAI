@@ -1,7 +1,9 @@
 using UnityEngine;
+using System.Collections;
 
 public class GeneratedEnemySearchingPlayer : MonoBehaviour
 {
+	/*
     public float moveSpeed = 0.8f;
     public float rayDistance = 20f;
     public float wallOffsetPercent = 0.2f;
@@ -245,51 +247,10 @@ void Shoot()
     StartCoroutine(DestroyProjectileAfterTime(proj));
 }
 
-using UnityEngine;
 
-public class ProjectileHitEffect : MonoBehaviour
-{
-    GeneratedEnemySearchingPlayer enemyAI;
 
-    public void Init(GeneratedEnemySearchingPlayer ai)
-    {
-        enemyAI = ai;
-    }
 
-    void Update()
-    {
-        if(GetComponent<Rigidbody>() == null) return;
-
-        LineRenderer lr = GetComponent<LineRenderer>();
-        if(lr != null)
-        {
-            lr.SetPosition(0, transform.position);
-            lr.SetPosition(1, transform.position + transform.forward * 1.5f);
-        }
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.CompareTag("Wall"))
-        {
-            Instantiate(enemyAI.explosionPrefab,
-                transform.position,
-                Quaternion.identity);
-
-            Instantiate(enemyAI.holePrefab,
-                collision.contacts[0].point,
-                Quaternion.LookRotation(collision.contacts[0].normal));
-
-            Destroy(gameObject);
-        }
-
-        if(collision.gameObject.CompareTag("Player"))
-        {
-            Destroy(gameObject);
-        }
-    }
-}
-IEnumerator DestroyProjectileAfterTime(GameObject projectile)
+public System.Collections.IEnumerator DestroyProjectileAfterTime(GameObject projectile)
 {
     yield return new WaitForSeconds(3f);
 
@@ -366,7 +327,7 @@ public void MoveToNearestWall(GameObject selectedWall, float min_distance, float
 		}
 	}
 }
-*/
+
 public void MoveToNearestWall(GameObject selectedWall, float min_distance, float movementSpeed)
 {
     float threshold = 0.5f;
@@ -609,5 +570,48 @@ void Searching()
         }
 
         targetPosition = transform.position + transform.forward * col.bounds.size.x;
-    }
+    }*/
 }
+/*
+public class ProjectileHitEffect : MonoBehaviour
+{
+    GeneratedEnemySearchingPlayer enemyAI;
+
+    public void Init(GeneratedEnemySearchingPlayer ai)
+    {
+        enemyAI = ai;
+    }
+
+    void Update()
+    {
+        if(GetComponent<Rigidbody>() == null) return;
+
+        LineRenderer lr = GetComponent<LineRenderer>();
+        if(lr != null)
+        {
+            lr.SetPosition(0, transform.position);
+            lr.SetPosition(1, transform.position + transform.forward * 1.5f);
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Wall"))
+        {
+            Instantiate(enemyAI.explosionPrefab,
+                transform.position,
+                Quaternion.identity);
+
+            Instantiate(enemyAI.holePrefab,
+                collision.contacts[0].point,
+                Quaternion.LookRotation(collision.contacts[0].normal));
+
+            Destroy(gameObject);
+        }
+
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
+    }
+}*/
