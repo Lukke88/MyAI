@@ -52,11 +52,12 @@ public class DesertReaperBehaviour : MonoBehaviour
 	public int CircleSegments = 36;
 	
 	[Header("Helicopter Detection")]
-public TMPro.TextMeshProUGUI InfoText;
-public GameObject detected_object;
-private float lastClickTime = 0f;
-public float doubleClickTime = 0.3f;
-public GameObject helicopter;
+	public TMPro.TextMeshProUGUI InfoText;
+	public GameObject detected_object;
+	private float lastClickTime = 0f;
+	public float doubleClickTime = 0.3f;
+	public GameObject helicopter;
+	public bool IsClickedToHelicopter = false; //this activates movement to certain object
 	//public Color SelectedColor = Color.yellow;
 	public Color DefaultColor = Color.black;
 	public Color SelectedColor = new Color(1f, 0.5f, 0f);
@@ -145,7 +146,7 @@ public void SetInitialTandemPosition()
 
             // forward raycast + debug line
             Ray forwardRay = new Ray(transform.position, transform.forward);
-            Debug.DrawLine(transform.position, transform.position + transform.forward * 200.0f, Color.red);
+            Debug.DrawLine(transform.position, transform.position + transform.forward * 200.0f, Color.blue);
         }
 		
 		if (Input.GetKeyDown(KeyCode.Space))
@@ -192,7 +193,7 @@ public void SetInitialTandemPosition()
 		*/
 		//AimToImportantGameObject();
 		
-		if(ActivatedToUseHelicopter==true)
+		if(ActivatedToUseHelicopter==true && IsClickedToHelicopter==true)
 		NavigatePlayerToKeyObject();
 	
 		HandleDoubleClick();

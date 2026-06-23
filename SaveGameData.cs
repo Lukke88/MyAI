@@ -11,7 +11,7 @@ public class SaveSystem : MonoBehaviour
 
     public void SaveGame()
     {
-        SaveData saveData = new SaveData();
+        SavePlayerData saveData = new SavePlayerData();
 
         // --- Uložíme hráče ---
         PlayerData playerData = new PlayerData();
@@ -64,7 +64,7 @@ public class SaveSystem : MonoBehaviour
     }
 
     string json = File.ReadAllText(path);
-    SaveData saveData = JsonUtility.FromJson<SaveData>(json);
+    SavePlayerData saveData = JsonUtility.FromJson<SavePlayerData>(json);
 
     // --- Načtení hráče ---
     hero.transform.position = saveData.player.position;
@@ -117,7 +117,7 @@ public class PlayerData
 
 // Celý save
 [Serializable]
-public class SaveData
+public class SavePlayerData
 {
     public PlayerData player;
     public List<GameObjectData> sceneObjects;
